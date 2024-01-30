@@ -4,12 +4,18 @@ const removeBtn = document.getElementById('btn-delete');
 const inputElem = document.getElementById('input-field');
 const divContainer = document.getElementById('listed');
 
+//use capture event
+divContainer.addEventListener('click', (event) => {
+    if (event.target.tagName === 'P'){
+        event.target.parentElement.remove();
+    };
+});
 
 removeBtn.addEventListener('click', () => {
     inputElem.value = '';
 })
 
-// add colorbox
+// add color box
 colorBox.forEach((color) => {
     color.addEventListener('click', (event) => {
         // let bgColor = event.target.getAttribute('style');
@@ -42,15 +48,11 @@ function addNewTask(event) {
         inputElem.value = '';
         inputElem.style.backgroundColor = '#fff';
 
-
-        newDiv.addEventListener('click', (event) => {
-            event.target.parentElement.remove();
-        });
+        //because we should use capture event
+        // newDiv.addEventListener('click', (event) => {
+        //     event.target.parentElement.remove();
+        // });
     };
-
-
-
-    // console.log(divContainer);
 };
 
 inputElem.addEventListener('keydown', (event) => {
